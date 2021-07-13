@@ -1,5 +1,6 @@
 package abhi.beerframework.resttemplate.MSSCBreweryClient.breweries.client;
 
+import java.net.URI;
 import java.util.UUID;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -13,7 +14,7 @@ import abhi.beerframework.resttemplate.MSSCBreweryClient.breweries.models.BeerDt
 @ConfigurationProperties(value = "sfg.brewery", ignoreUnknownFields = false)
 public class BreweryClient {
 	
-	public final String BEER_PATH = "/beerServiceApi/v1/beer/";
+	public final String BEER_PATH_V1 = "/beerServiceApi/v1/beer/";
 	
 	private String apiHost;
 	
@@ -27,7 +28,12 @@ public class BreweryClient {
 	
 	public BeerDto getBeerById(UUID beerId) {
 		
-		return restTemplate.getForObject(apiHost + BEER_PATH + beerId.toString(), BeerDto.class);
+		return restTemplate.getForObject(apiHost + BEER_PATH_V1 + beerId.toString(), BeerDto.class);
+	}
+	
+	public URI saveNewBeer(BeerDto beerDto) {
+		
+		return restTemplate.postForLocation(apiHost + BEER_PATH_V1, beerDto);
 	}
 	
 	public void setApiHost(String apiHost) {

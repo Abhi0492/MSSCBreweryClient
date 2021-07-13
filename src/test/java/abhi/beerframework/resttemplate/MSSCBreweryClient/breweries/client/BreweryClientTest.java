@@ -2,6 +2,7 @@ package abhi.beerframework.resttemplate.MSSCBreweryClient.breweries.client;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.net.URI;
 import java.util.UUID;
 
 import org.junit.jupiter.api.Test;
@@ -23,6 +24,18 @@ public class BreweryClientTest {
 		
 		assertNotNull(dto);
 		
+	}
+	
+	@Test
+	public void saveNewBeer() {
+		
+		BeerDto beerDto = BeerDto.builder().beerName("Carlsberg").build();
+		
+		URI uri = breweryClient.saveNewBeer(beerDto);
+		
+		assertNotNull(uri);
+		
+		System.out.println("URI for new beer " + uri.toString());
 	}
 	
 	
