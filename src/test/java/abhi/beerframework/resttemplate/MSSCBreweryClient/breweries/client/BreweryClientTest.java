@@ -27,8 +27,8 @@ public class BreweryClientTest {
 	}
 	
 	@Test
-	public void saveNewBeer() {
-		
+	public void testSaveNewBeer() {
+		//given
 		BeerDto beerDto = BeerDto.builder().beerName("Carlsberg").build();
 		
 		URI uri = breweryClient.saveNewBeer(beerDto);
@@ -36,6 +36,16 @@ public class BreweryClientTest {
 		assertNotNull(uri);
 		
 		System.out.println("URI for new beer " + uri.toString());
+	}
+	
+	@Test
+	public void testUpdateBeer() {
+		//given
+		BeerDto beerDto = BeerDto.builder().beerName("Kingfisher").build();
+		
+		breweryClient.updateBeer(UUID.randomUUID(), beerDto);
+		
+		
 	}
 	
 	
