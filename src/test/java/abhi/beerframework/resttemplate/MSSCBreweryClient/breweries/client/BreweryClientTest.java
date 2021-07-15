@@ -44,8 +44,9 @@ public class BreweryClientTest {
 		BeerDto beerDto = BeerDto.builder().beerName("Kingfisher").build();
 		
 		breweryClient.updateBeer(UUID.randomUUID(), beerDto);
+		 
 		
-		
+		System.out.println("URI for new beer " + beerDto);
 	}
 	
 	
