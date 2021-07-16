@@ -49,5 +49,11 @@ public class BreweryClientTest {
 		System.out.println("URI for new beer " + beerDto);
 	}
 	
+	@Test
+	public void testDeleteBeer() {
+		
+		breweryClient.deleteBeer(UUID.randomUUID());
+	}
+	
 	
 }
